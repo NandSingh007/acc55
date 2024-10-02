@@ -191,7 +191,7 @@ document.getElementById('imageFormupdate').addEventListener('submit', function (
     formData.append("NoticeImageIds", sliderImageIds); // Append the sliderImageIds here
   // console.log(formData)
     // Fetch API to send the FormData object
-    fetch(`http://localhost:6500/NoticeUpdateImg`, {
+    fetch(`https://aviatorhackgame.in/NoticeUpdateImg`, {
         method: 'POST',
         body: formData
     })
@@ -224,7 +224,7 @@ document.getElementById('imageFormupdate').addEventListener('submit', function (
             formData.append("NoticeName", Name);
             formData.append("NoticeImg", NoticeImg);
             // Fetch API to send the FormData object
-            fetch(`http://localhost:6500/NoticeSlider`, {
+            fetch(`https://aviatorhackgame.in/NoticeSlider`, {
                 method: 'POST',
                 body: formData
             })
@@ -248,7 +248,7 @@ localhost.reload()
           NticeinnerId,
             sliderImageIds
         };
-        fetch(`http://localhost:6500/NoticeDelteImg`, {
+        fetch(`https://aviatorhackgame.in/NoticeDelteImg`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

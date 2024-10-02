@@ -80,7 +80,9 @@ router.get("/admin_role", authMiddleware, (req, res) => {
 });
 router.get("/player", authMiddleware, async (req, res) => {
   try {
-    const profileResponse = await fetch(`http://localhost:6500/back/fetchUser`);
+    const profileResponse = await fetch(
+      `https://aviatorhackgame.in/back/fetchUser`
+    );
 
     // Check if the response is JSON
     const contentType = profileResponse.headers.get("content-type");
@@ -105,7 +107,7 @@ router.get("/player", authMiddleware, async (req, res) => {
 router.get("/Ludo", authMiddleware, async (req, res) => {
   try {
     const bankDetailsResponse = await fetch(
-      `http://localhost:6500/back/getBankDetails`
+      `https://aviatorhackgame.in/back/getBankDetails`
     );
     const bankDetails = await bankDetailsResponse.json();
 
@@ -135,7 +137,7 @@ router.get("/user/:userId", authMiddleware, async (req, res) => {
     const userId = req.params.userId;
     // console.log(userId);
     const apiResponse = await fetch(
-      `http://localhost:6500/back/personalDetailsOfUser/${userId}`
+      `https://aviatorhackgame.in/back/personalDetailsOfUser/${userId}`
     );
 
     if (!apiResponse.ok) {
@@ -201,12 +203,12 @@ router.get("/Bonus", async (req, res) => {
   try {
     // Fetch Loan Types data
     const loanResponse = await axios.get(
-      "http://localhost:6500/back/GetLoanTypes"
+      "https://aviatorhackgame.in/back/GetLoanTypes"
     );
 
     // Fetch Insurance Banks data
     const insuranceResponse = await axios.get(
-      "http://localhost:6500/back/getInsuranceBanks"
+      "https://aviatorhackgame.in/back/getInsuranceBanks"
     );
 
     // Get data from both responses
@@ -238,7 +240,7 @@ router.get("/GetLoanTypes", GetLoanTypes);
 router.get("/Refer", async (req, res) => {
   try {
     const response = await axios.get(
-      "http://localhost:6500/back/FetchPackageDataController"
+      "https://aviatorhackgame.in/back/FetchPackageDataController"
     ); // Replace with your API endpoint
     const data = response.data;
 
@@ -258,7 +260,7 @@ router.delete("/DeletePackage/:id", DeletePackage);
 router.get("/rech_pe", async (req, res) => {
   try {
     const profileResponse = await fetch(
-      "http://localhost:6500/back/fetchCompanyProfile"
+      "https://aviatorhackgame.in/back/fetchCompanyProfile"
     );
     const profileData = await profileResponse.json();
 
@@ -285,7 +287,7 @@ router.post("/loginNumber", loginNumber);
 router.get("/sec_re", async (req, res) => {
   try {
     const profileResponse = await fetch(
-      "http://localhost:6500/back/getSecurityFeeDataWithStatusZero"
+      "https://aviatorhackgame.in/back/getSecurityFeeDataWithStatusZero"
     );
     const profile = await profileResponse.json();
     res.render("security_req", {
@@ -302,7 +304,7 @@ router.get("/sec_re", async (req, res) => {
 router.get("/sec_app", async (req, res) => {
   try {
     const profileResponse = await fetch(
-      "http://localhost:6500/back/getSecurityFeeDataWithStatusOne"
+      "https://aviatorhackgame.in/back/getSecurityFeeDataWithStatusOne"
     );
     const profile = await profileResponse.json();
     // console.log(profile, "profile  1");
@@ -320,7 +322,7 @@ router.get("/sec_app", async (req, res) => {
 // router.get("/sec_rej", async (req, res) => {
 //   try {
 //     const profileResponse = await fetch(
-//       "http://localhost:6500/back/getSecurityFeeDataWithStatusTwo"
+//       "https://aviatorhackgame.in/back/getSecurityFeeDataWithStatusTwo"
 //     );
 //     const profile = await profileResponse.json();
 //     // console.log(profile, "profile  2");

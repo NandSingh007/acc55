@@ -27,16 +27,16 @@ var app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:6500",
+    origin: "https://aviatorhackgame.in",
     methods: ["POST", "GET", "DELETE", "PUT"]
   }
 });
 const allowedOrigins = [
-  "http://localhost:6500",
-  "http://localhost:6500/back",
+  "https://aviatorhackgame.in",
+  "https://aviatorhackgame.in/back",
   "http://localhost:3000"
 
-  // "http://192.168.29.155:6500"
+  // "http://192.168.29.155:6000"
 ];
 
 // CORS options

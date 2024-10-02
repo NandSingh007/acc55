@@ -51,7 +51,7 @@
   const parse = (timeString) => {
     const multiples = {
       s: 1000,
-      m: 65000
+      m: 60000
     };
     const parsedTime = /^(\d+)([ms]?)$/.exec(timeString);
     return (

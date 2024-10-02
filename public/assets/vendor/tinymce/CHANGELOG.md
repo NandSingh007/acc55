@@ -1130,7 +1130,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added font related Oxide variables for secondary buttons, allowing for custom styling. #TINY-6061
 - Added new `table_header_type` setting to control how table header rows are structured. #TINY-6007
 - Added new `table_sizing_mode` setting to replace the `table_responsive_width` setting, which has now been deprecated. #TINY-6051
-- Added new `mceTableSizingMode` command for changing the sizing mode of a table. #TINY-6500
+- Added new `mceTableSizingMode` command for changing the sizing mode of a table. #TINY-6000
 - Added new `mceTableRowType`, `mceTableColType`, and `mceTableCellType` commands and value queries. #TINY-6150
 
 ### Changed

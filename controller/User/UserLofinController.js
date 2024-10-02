@@ -1695,7 +1695,7 @@ exports.login = async (req, res) => {
     });
 
     // Send token in HTTP-only cookie
-    res.cookie("token", token, { httpOnly: true, maxAge: 3650000 }); // Cookie expires in 1 hour
+    res.cookie("token", token, { httpOnly: true, maxAge: 3600000 }); // Cookie expires in 1 hour
 
     // Respond with success message
     res.json({ message: "Login successful", token });
@@ -1797,7 +1797,7 @@ exports.sendotp2 = async (req, res) => {
     }
 
     // Generate OTP
-    const otp = Math.floor(100000 + Math.random() * 650000).toString(); // 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 600000).toString(); // 6-digit OTP
     const otpExpires = Date.now() + 10 * 60 * 1000; // 10 minutes from now
 
     // Update user with OTP and expiration
