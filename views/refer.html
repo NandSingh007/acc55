@@ -192,7 +192,7 @@
   
       // Send DELETE request to backend
       $.ajax({
-        url: 'https://aviatorhackgame.in/DeletePackage/' + itemId, // Replace with your actual backend endpoint
+        url: 'http://localhost:6500/DeletePackage/' + itemId, // Replace with your actual backend endpoint
         type: 'DELETE',
         success: function(response) {
           // Handle success (e.g., remove the row from the table)
@@ -225,7 +225,7 @@
 
         // Send the data via AJAX POST request
         $.ajax({
-            url: 'https://aviatorhackgame.in/PackageDataController',
+            url: 'http://localhost:6500/PackageDataController',
             type: 'POST',
             data: JSON.stringify(formData),
             contentType: 'application/json',
@@ -274,7 +274,7 @@ $(document).ready(function() {
 
     // Send PUT request to the backend to update the loan
     $.ajax({
-      url: 'https://aviatorhackgame.in/updatePackage/' + itemId,
+      url: 'http://localhost:6500/updatePackage/' + itemId,
       type: 'PUT',
       data: {
         LoanType: loanType,

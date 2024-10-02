@@ -27,16 +27,16 @@ var app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://aviatorhackgame.in",
+    origin: "http://localhost:6500",
     methods: ["POST", "GET", "DELETE", "PUT"]
   }
 });
 const allowedOrigins = [
-  "https://aviatorhackgame.in",
-  "https://aviatorhackgame.in/back",
+  "http://localhost:6500",
+  "http://localhost:6500/back",
   "http://localhost:3000"
 
-  // "http://192.168.29.155:6000"
+  // "http://192.168.29.155:6500"
 ];
 
 // CORS options
@@ -163,7 +163,7 @@ app.use(function (req, res, next) {
 });
 mongoose
   .connect(
-    "mongodb+srv://worldpay472:0lwiqW5JiSnz7O4B@cluster0.zjzsj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
+    "mongodb+srv://worldpay472:e0n2pi5O3tbTP9bA@cluster0.51iv2.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,

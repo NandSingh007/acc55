@@ -177,8 +177,8 @@
       festivalBonusdata,
       dateFestival
     };
-const url1 = 'https://aviatorhackgame.in/FestivalBonus';
-const url2 = 'https://aviatorhackgame.in/FestivalBonusforuser';
+const url1 = 'http://localhost:6500/FestivalBonus';
+const url2 = 'http://localhost:6500/FestivalBonusforuser';
     try {
     const [response1, response2] = await Promise.all([
       postData(url1, formData), // First POST request
@@ -238,8 +238,8 @@ document.addEventListener('DOMContentLoaded', function () {
       festName,
       Id
     };
-    const url1 = 'https://aviatorhackgame.in/FestivalBonusEditInUser';
-const url2 = 'https://aviatorhackgame.in/FestivalBonusforuserEditInFestival';
+    const url1 = 'http://localhost:6500/FestivalBonusEditInUser';
+const url2 = 'http://localhost:6500/FestivalBonusforuserEditInFestival';
     try {
     const [response1, response2] = await Promise.all([
       postData(url1, formData), // First POST request
@@ -277,8 +277,8 @@ document.addEventListener('DOMContentLoaded', function async() {
           Id,Name
         };
         // Send a POST request to delete the slider image
-        const url1 = 'https://aviatorhackgame.in/FestivalBonusDeleter';
-const url2 = 'https://aviatorhackgame.in/FestivalBonusforuserDelete';
+        const url1 = 'http://localhost:6500/FestivalBonusDeleter';
+const url2 = 'http://localhost:6500/FestivalBonusforuserDelete';
     try {
     const [response1, response2] = await Promise.all([
       postData(url1, formData), // First POST request

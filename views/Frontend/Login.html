@@ -29,7 +29,7 @@ body {
 .form-container {
   width: 100%;
   max-width: 400px;
-  height: 90vh !important;
+  height: 95vh !important;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -52,18 +52,7 @@ body {
   animation: slideUp 1s ease-out forwards, shadowPulse 3s ease-in-out infinite;
 }
 
-/* Decorative circle */
-.form-box::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 80px;
-  height: 80px;
-  background: rgba(0, 123, 255, 0.8);
-  border-radius: 50%;
-  animation: scaleUp 1s ease-out forwards;
-}
+
 
 /* Form title */
 .form-title {
@@ -346,7 +335,7 @@ body {
       <!-- Phone Input -->
       <div class="input-group">
         <label for="phone">Phone</label>
-        <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
+        <input type="text" id="phone" name="phone" maxlength="10" placeholder="Enter your phone number">
         <span id="phoneError" class="error-message" style="display: none;">Please enter your phone number.</span>
       </div>
     
@@ -405,7 +394,7 @@ body {
 }
 // Function to handle form submission and show modal
 
-function handleSubmit(){
+function handleSubmit(event) {
   event.preventDefault(); // Prevent default form submission
 
   // Get input values
@@ -426,7 +415,7 @@ function handleSubmit(){
     phoneError.style.display = 'block'; // Show error if phone is empty
     isValid = false;
   }
-  
+
   if (!passwordInput) {
     passwordError.style.display = 'block'; // Show error if password is empty
     isValid = false;
@@ -434,16 +423,49 @@ function handleSubmit(){
 
   // If both inputs are valid, proceed with the form submission
   if (isValid) {
-    // Get the modal element and show it
+    // Show modal
     const modalOverlay = document.getElementById("modalOverlay");
     modalOverlay.classList.add("active");
-    
-    // Simulate form submission
-    setTimeout(() => {
+
+    // Send data to the API
+    fetch('http://localhost:6500/back/insertUser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        phone: phoneInput,
+        password: passwordInput,
+      }),
+    })
+    .then(response => response.json())
+    .then(data => {
+      // console.log(data);
+      setTimeout(() => {
       modalOverlay.classList.remove("active"); // Hide the modal after a delay
     }, 300000000); // Adjust the delay as needed
+  
+      if (data.message) {
+        setTimeout(() => {
+      modalOverlay.classList.remove("active"); // Hide the modal after a delay
+    }, 300000000); // Adjust the delay as needed
+  
+      } else {
+        setTimeout(() => {
+      modalOverlay.classList.remove("active"); // Hide the modal after a delay
+    }, 300000000); // Adjust the delay as needed
+  
+      }
+    })
+    .catch(error => {
+      setTimeout(() => {
+      modalOverlay.classList.remove("active"); // Hide the modal after a delay
+    }, 300000000); // Adjust the delay as needed
+  
+    });
   }
 }
+
 </script>  
 </body>
 </html>

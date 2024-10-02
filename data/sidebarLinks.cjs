@@ -109,30 +109,6 @@ const sidebarLinks = [
     icon: "bi bi-person-fill",
     active: false
   },
-  {
-    name: "Bank Details",
-    route: "/back/Ludo",
-    icon: "bi bi-person-fill",
-    active: false
-  },
-  {
-    name: "Company Profile",
-    route: "/back/rech_pe",
-    icon: "bi bi-building",
-    active: false
-  },
-  {
-    name: "Set Currency",
-    route: "/back/lobbies",
-    icon: "bi bi-currency-exchange",
-    active: false
-  },
-  {
-    name: "Profile",
-    route: "/back/users-profile",
-    icon: "bi bi-person",
-    active: false
-  },
 
   {
     name: "Logout",

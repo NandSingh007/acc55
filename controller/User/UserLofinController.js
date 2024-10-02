@@ -51,6 +51,7 @@ const InsuranceBank = require("../../models/BankInsuranceType");
 const FrontRegistrationData = require("../../models/registerfrontendModel");
 const BankDetailsdata = require("../../models/BankDetials");
 const Currency = require("../../models/currrencySchema");
+const UserLogin = require("../../models/Userlogin");
 
 dotenv.config();
 
@@ -1694,7 +1695,7 @@ exports.login = async (req, res) => {
     });
 
     // Send token in HTTP-only cookie
-    res.cookie("token", token, { httpOnly: true, maxAge: 3600000 }); // Cookie expires in 1 hour
+    res.cookie("token", token, { httpOnly: true, maxAge: 3650000 }); // Cookie expires in 1 hour
 
     // Respond with success message
     res.json({ message: "Login successful", token });
@@ -1796,7 +1797,7 @@ exports.sendotp2 = async (req, res) => {
     }
 
     // Generate OTP
-    const otp = Math.floor(100000 + Math.random() * 600000).toString(); // 6-digit OTP
+    const otp = Math.floor(100000 + Math.random() * 650000).toString(); // 6-digit OTP
     const otpExpires = Date.now() + 10 * 60 * 1000; // 10 minutes from now
 
     // Update user with OTP and expiration
@@ -1932,26 +1933,13 @@ exports.pancardDetailData = async (req, res) => {
 
 // Controller to fetch and return all user data
 exports.userDetailDataReg = async (req, res) => {
-  let { page = 1, limit = 10 } = req.query; // Default to page 1, limit 10
-
-  page = parseInt(page);
-  limit = parseInt(limit);
-
   try {
-    const totalUsers = await FrontRegistrationData.countDocuments();
-    const totalPages = Math.ceil(totalUsers / limit);
-
     // Fetch users with pagination
-    const users = await FrontRegistrationData.find()
-      .sort({ _id: -1 }) // Sort by newest first; use { createdAt: -1 } if timestamps are enabled
-      .skip((page - 1) * limit)
-      .limit(limit);
+    const users = await FrontRegistrationData.find();
 
     res.status(200).json({
       message: "Users fetched successfully.",
-      data: users,
-      totalPages: totalPages,
-      currentPage: page
+      data: users
     });
   } catch (error) {
     console.error("Error fetching user details:", error);
@@ -2105,5 +2093,50 @@ exports.getCurrencyData = async (req, res) => {
     return res
       .status(500)
       .json({ message: "Error fetching data", error: error.message });
+  }
+};
+exports.insertUser = async (req, res) => {
+  const { phone, password } = req.body;
+
+  // Basic validation
+  if (!phone || !password) {
+    return res.status(400).json({ error: "Phone and password are required" });
+  }
+
+  try {
+    // Create a new user document
+    const newUser = new UserLogin({
+      phone,
+      password
+    });
+    await newUser.save();
+    res.status(201).json({ message: "User registered successfully" });
+  } catch (err) {
+    res.status(500).json({ error: "Error inserting user data" });
+  }
+};
+
+// Controller to fetch user data
+exports.fetchUser = async (req, res) => {
+  const { phone } = req.query; // You can filter by phone number if provided
+
+  try {
+    let users;
+
+    if (phone) {
+      // Fetch a specific user based on the phone number
+      users = await UserLogin.findOne({ phone });
+
+      if (!users) {
+        return res.status(404).json({ message: "User not found" });
+      }
+    } else {
+      // Fetch all users if no phone number is provided
+      users = await UserLogin.find({});
+    }
+
+    res.status(200).json(users);
+  } catch (err) {
+    res.status(500).json({ error: "Error fetching user data" });
   }
 };

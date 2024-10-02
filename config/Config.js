@@ -42,10 +42,10 @@ function generateRandomAPIString(length = 35) {
 
 // Configuration object with various settings
 const config = {
-  baseUrl: "https://aviatorhackgame.in",
+  baseUrl: "http://localhost:6500",
   mongoURI:
     "mongodb+srv://worldpay472:AqtSlTDgrYah1D5T@cluster0.rsun1.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0",
-  port: 6000
+  port: 6500
 };
 
 // Export modules

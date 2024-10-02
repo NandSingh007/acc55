@@ -51,7 +51,7 @@
   const parse = (timeString) => {
     const multiples = {
       s: 1000,
-      m: 60000,
+      m: 65000
     };
     const parsedTime = /^(\d+)([ms]?)$/.exec(timeString);
     return (
@@ -68,34 +68,34 @@
       if (valid) {
         return {
           value: parse(value),
-          valid,
+          valid
         };
       } else {
         return {
           valid: false,
-          message: "Must be a string.",
+          message: "Must be a string."
         };
       }
     };
     registerOption("autosave_ask_before_unload", {
       processor: "boolean",
-      default: true,
+      default: true
     });
     registerOption("autosave_prefix", {
       processor: "string",
-      default: "tinymce-autosave-{path}{query}{hash}-{id}-",
+      default: "tinymce-autosave-{path}{query}{hash}-{id}-"
     });
     registerOption("autosave_restore_when_empty", {
       processor: "boolean",
-      default: false,
+      default: false
     });
     registerOption("autosave_interval", {
       processor: timeProcessor,
-      default: "30s",
+      default: "30s"
     });
     registerOption("autosave_retention", {
       processor: timeProcessor,
-      default: "20m",
+      default: "20m"
     });
   };
   const shouldAskBeforeUnload = option("autosave_ask_before_unload");
@@ -159,7 +159,7 @@
         prefix + "draft",
         editor.getContent({
           format: "raw",
-          no_events: true,
+          no_events: true
         })
       );
       global$2.setItem(prefix + "time", new Date().getTime().toString());
@@ -202,7 +202,7 @@
     storeDraft: () => storeDraft(editor),
     restoreDraft: () => restoreDraft(editor),
     removeDraft: (fire) => removeDraft(editor, fire),
-    isEmpty: (html) => isEmpty(editor, html),
+    isEmpty: (html) => isEmpty(editor, html)
   });
 
   var global = tinymce.util.Tools.resolve("tinymce.EditorManager");
@@ -243,13 +243,13 @@
       tooltip: "Restore last draft",
       icon: "restore-draft",
       onAction,
-      onSetup: makeSetupHandler(editor),
+      onSetup: makeSetupHandler(editor)
     });
     editor.ui.registry.addMenuItem("restoredraft", {
       text: "Restore last draft",
       icon: "restore-draft",
       onAction,
-      onSetup: makeSetupHandler(editor),
+      onSetup: makeSetupHandler(editor)
     });
   };
 

@@ -321,7 +321,7 @@
     const formData = {
       child, firstParent, SecondParent ,ThirdParent 
     };
-    fetch('https://aviatorhackgame.in/ReferWinDataController', {
+    fetch('http://localhost:6500/ReferWinDataController', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -351,7 +351,7 @@ const submitForm2 = async(event)=> {
     const formData = {
       FixedAmount
     };
-    fetch('https://aviatorhackgame.in/ReferWinDataFixedAmt', {
+    fetch('http://localhost:6500/ReferWinDataFixedAmt', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -382,7 +382,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         // console.log(formData)
         // Send a POST request to delete the slider image
-        fetch(`https://aviatorhackgame.in/DeletereReferWin`, {
+        fetch(`http://localhost:6500/DeletereReferWin`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -432,7 +432,7 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         // console.log(formData)
         // Send a POST request to delete the slider image
-        fetch(`https://aviatorhackgame.in/DeletereReferWinsecond`, {
+        fetch(`http://localhost:6500/DeletereReferWinsecond`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
